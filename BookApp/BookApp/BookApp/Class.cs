@@ -20,11 +20,12 @@ namespace BookApp
         }
 
         public void printInfo()
-        {       Console.WriteLine($"Book name: {this.name} \n" +
-                $"Author: {this.author} \n" +
-                $"ID number: {this.ID} \n" +
-                $"Price: {this.price} euro \n" +
-                $"---------------------------------------- \n");
+        {
+            Console.WriteLine($"Book name: {this.name} \n" +
+            $"Author: {this.author} \n" +
+            $"ID number: {this.ID} \n" +
+            $"Price: {this.price} euro \n" +
+            $"---------------------------------------- \n");
 
         }
 
@@ -32,7 +33,7 @@ namespace BookApp
         {
             if (this.price > book.price)
                 return $"\n{this.name} ({this.price}e) is more expensive than {book.name} ({book.price}e). ";
-            else if(this.price == book.price)
+            else if (this.price == book.price)
                 return $"\nNo difference in price. ";
             else
                 return $"\n{book.name} ({book.price}e) is more expensive than {this.name} ({this.price}e).";
