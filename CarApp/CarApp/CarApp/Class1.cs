@@ -19,16 +19,28 @@ namespace CarApp
         public void ShowCarInfo()
         {
             Console.WriteLine($"---------------------" +
-                $"\nCar brand: {this.brand}\nTop speed: {this.speed}kmph\n");
+                $"\nCar brand: {this.brand}\nSpeed: {this.speed}kmph\n");
         }
 
         public string AskData()
         {
-            Console.WriteLine("\nInsert car brand: ");
-            this.brand = Console.ReadLine();
-            Console.WriteLine("\nInsert car speed: ");
-            this.speed = int.Parse(Console.ReadLine());
-            return $"\nYour car brand is now {this.brand}, and it's top speed is {this.speed}kmph\n---------------------";
+                Console.WriteLine("\nInsert car brand: ");
+                this.brand = Console.ReadLine();
+                Console.WriteLine("\nInsert car speed: ");
+                string speedValue = Console.ReadLine();
+
+                if (speedValue.Length > 0) //(!string.IsNullOrEmpty(speedValue))
+                {
+                    this.speed = int.Parse(speedValue);
+                    return $"\nYour car brand is set as {this.brand}.\n" +
+                    $"Your speed is set as {this.speed}.\n";
+                }
+                    else
+                    {
+                        this.speed = 0;
+                        return $"Please set the brand and speed.";
+                    }
+
         }
 
         public string Accelerate()

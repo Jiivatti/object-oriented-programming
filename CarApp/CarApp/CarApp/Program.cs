@@ -8,7 +8,12 @@ namespace CarApp
         {
             Cars car1 = new Cars();
             Cars car2 = new Cars();
-            Console.WriteLine(car1.AskData());
+
+            do
+            {
+                Console.WriteLine(car1.AskData());
+            } while (car1.speed < 0);
+            
             string choice = null;
 
 
@@ -19,7 +24,12 @@ namespace CarApp
                 switch (choice.ToUpper())
                 {
                     case "Q":
-                        Console.WriteLine(car2.AskData());
+                        do
+                        {
+                            Console.WriteLine(car2.AskData());
+                        } while (car2.speed < 0);
+                        Console.ReadKey();
+                        Console.Clear();
                         break;
 
                     case "W":
@@ -27,23 +37,47 @@ namespace CarApp
                         if (car2.brand != null)
                         {
                             car2.ShowCarInfo();
-                        } else break;
+                        }
+                        Console.ReadKey();
+                        Console.Clear();
                         break;
-
+                        
                     case "R":
-                        Console.WriteLine(car1.Accelerate());
-                        if (car2.speed != 0)
+                        if (car1.speed <= 0)
                         {
-                            Console.WriteLine(car2.Accelerate());
-                        } else break;
+                            Console.WriteLine("\nCan't accelerate that, chief.\n");
+                        }
+                        
+                        else
+                        {
+                            Console.WriteLine(car1.Accelerate());
+
+                            if (car2.speed != 0 || car2.speed > 0)
+                            {
+                                Console.WriteLine(car2.Accelerate());
+                            }
+                        }
+                        Console.ReadKey();
+                        Console.Clear();
                         break;
 
                     case "E":
-                        Console.WriteLine(car1.Decelerate());
-                        if (car2.speed != 0)
+                        if (car1.speed <= 0)
                         {
-                            Console.WriteLine(car2.Decelerate());
-                        } else break;
+                            Console.WriteLine("\nCan't accelerate that, chief.\n");
+                        }
+
+                        else
+                        {
+                            Console.WriteLine(car1.Decelerate());
+                            if (car2.speed != 0 || car2.speed > 0)
+                            {
+                                Console.WriteLine(car2.Decelerate());
+                            }
+
+                        }
+                        Console.ReadKey();
+                        Console.Clear();
                         break;
                 }
             } while (choice.ToUpper() != "F");
@@ -52,12 +86,13 @@ namespace CarApp
 
             string userInterface()
             {
-                Console.WriteLine("[Q] Add another car");
-                Console.WriteLine("[W] Show registered cars");
+                Console.WriteLine("\n[Q] Add another car");
+                Console.WriteLine("[W] Show registered car(s)");
                 Console.WriteLine("[E] Decelerate car(s)");
                 Console.WriteLine("[R] Turbo boost car(s)");
-                Console.WriteLine("[F] End program");
+                Console.WriteLine("[F] End program\n----------------------");
                 return Console.ReadLine();
+                
             }
         }
     }
