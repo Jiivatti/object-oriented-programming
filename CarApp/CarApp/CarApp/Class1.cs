@@ -27,19 +27,19 @@ namespace CarApp
                 Console.WriteLine("\nInsert car brand: ");
                 this.brand = Console.ReadLine();
                 Console.WriteLine("\nInsert car speed: ");
-                string speedValue = Console.ReadLine();
+                int speedValue = Convert.ToInt32(Console.ReadLine());
 
-                if (speedValue.Length > 0) //(!string.IsNullOrEmpty(speedValue))
+                if (speedValue > 0) //(!string.IsNullOrEmpty(speedValue))
                 {
-                    this.speed = int.Parse(speedValue);
+                    this.speed = speedValue;
                     return $"\nYour car brand is set as {this.brand}.\n" +
                     $"Your speed is set as {this.speed}.\n";
                 }
-                    else
-                    {
-                        this.speed = 0;
-                        return $"Please set the brand and speed.";
-                    }
+                else
+                {
+                    this.speed = 0;
+                    return $"Please set the brand and speed.";
+                }
 
         }
 

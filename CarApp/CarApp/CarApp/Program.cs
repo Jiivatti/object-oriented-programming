@@ -12,7 +12,7 @@ namespace CarApp
             do
             {
                 Console.WriteLine(car1.AskData());
-            } while (car1.speed < 0);
+            } while (car1.speed <= 0 || car1.brand == null);
             
             string choice = null;
 
@@ -27,7 +27,7 @@ namespace CarApp
                         do
                         {
                             Console.WriteLine(car2.AskData());
-                        } while (car2.speed < 0);
+                        } while (car2.speed <= 0);
                         Console.ReadKey();
                         Console.Clear();
                         break;
